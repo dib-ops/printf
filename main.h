@@ -8,16 +8,15 @@
 
 /**
  * struct specifiers - defines a structure for symbols and functions
- * @spec: format specifier
+ * @specifier: format specifier
  * @f: The function associated
  */
 
-struct specifiers
+typedef struct specifiers
 {
-	char *spec;
+	char *specifier;
 	int (*f)(va_list);
-}
-typedef struct specifiers specifier_t;
+} specifier_t;
 
 /*prototypes*/
 int _printf(const char *format, ...);

@@ -23,5 +23,5 @@ int _printf(const char *format, ...)
 	/*Calling parser function*/
 	writted_chars = parser(format, f_list, arg_list);
 	va_end(arg_list);
-	return (printed chars);
+	return (writted chars);
 }
