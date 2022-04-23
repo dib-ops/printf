@@ -1,4 +1,8 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stddef.h>
 
 /**
  * _printf - produces output according to a format
@@ -7,21 +11,43 @@
  */
 int _printf(const char *format, ...)
 {
-	int writted_chars;
-	specifier_t f_list[] = {
-		{"c", print_char},
-		{"s", print_string},
-		{"%", print_percent},
-		{NULL, NULL}
-	};
-	va_list arg_list;
+	if (format != NULL)
+	{
+		int count = 0, i;
+		int (*f)(va_list);
+		va_list args;
 
-	if (format == NULL)
-		return (-1);
-
-	va_start(arg_list, format);
-	/*Calling parser function*/
-	writted_chars = parser(format, f_list, arg_list);
-	va_end(arg_list);
-	return (writted chars);
+		va_start(args, format);
+		i = 0;
+		if (format[0] == '%' && format[1] == '\0')
+			return (-1);
+		while (format != NULL && format[i] != '\0')
+		{
+			if (format[i] == '%')
+			{
+				if (format[i + 1] == '%')
+				{
+					count += _putchar(format[i]);
+					i += 2;
+				}
+				else
+				{
+					f = get_func(format[i + 1]);
+					if (f)
+						count += f(args);
+					else
+						count = _putchar(format[i]) + _putchar(format[i + 1]);
+					i += 2;
+				}
+			}
+			else
+			{
+				count += _putchar(format[i]);
+				i++;
+			}
+		}
+		va_end(args);
+		return (count);
+	}
+	return (-1);
 }
