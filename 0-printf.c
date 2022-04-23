@@ -1,8 +1,3 @@
-#include <stdarg.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <stddef.h>
 #include "main.h"
 /**
  * _printf - printf copu
