@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 	int writted_chars;
-	specifiers_t f_list[] = {
+	specifier_t f_list[] = {
 		{"c", print_char},
 		{"s", print_string},
 		{"%", print_percent},
