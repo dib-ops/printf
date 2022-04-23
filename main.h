@@ -1,22 +1,23 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
 
 
 /**
- * struct format - Struct for format
- * @specifiers: Struct format
+ * struct specifiers - defines a structure for symbols and functions
+ * @spec: format specifier
  * @f: The function associated
  */
 
-typedef struct specifiers
+struct specifiers
 {
-	char specifiers;
+	char *spec;
 	int (*f)(va_list);
-} specifiers_t;
+}
+typedef struct specifiers specifier_t;
 
 /*prototypes*/
 int _printf(const char *format, ...);
