@@ -1,47 +1,26 @@
 #include "main.h"
+
 /**
- * _printf - printf copu
- * @format: format receive
- * Return: ret
+ * _printf - produces output according to a format
+ * @format: The string containing all the desired characters
+ * Return: The number of characters printed
  */
 int _printf(const char *format, ...)
 {
-	va_list p;
-	int i = 0, j = 0, ret = 0, fret = 0, flag = 0;
-	pr pf_s[] = {
-		{'s', print_string}, {'c', print_char}, {'%', print_percent},
-		{'d', print_int}, {'i', print_int},
-		{'\0', NULL}};
-	va_start(p, format);
+	int writted_chars;
+	specifiers_t f_list[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"%", print_percent}
+	};
+	va_list arg_list;
+
 	if (format == NULL)
 		return (-1);
-	for (i = 0; format != NULL && format[i] != '\0'; i++)
-	{	flag = 0;
-		if (format[i] == '%')
-		{
-			if (format[i + 1] == '\0')
-				return (-1);
-			i++;
-			for (j = 0; pf_s[j].c != '\0'; j++)
-				if (format[i] == pf_s[j].c)
-				{
-					fret += pf_s[j].f(p);
-					flag = 1;
-				}
-		}
-		else
-		{
-			_putchar(format[i]);
-			ret++;
-			flag = 1;
-		}
-		if (flag == 0)
-		{
-			i--;
-			_putchar(37);
-			fret++;
-		}
-	}
-	ret += fret;
-	return (ret);
+
+	va_start(arg_list, format);
+	/*Calling parser function*/
+	printed_chars = parser(format, f_list, arg_list);
+	va_end(arg_list);
+	return (printed chars);
 }
