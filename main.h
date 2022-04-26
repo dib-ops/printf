@@ -1,26 +1,26 @@
 #ifndef MAIN_H
 #define MAIN_H
-
-#include <unistd.h>
-#include <stdlib.h>
+#include <limits.h>
 #include <stdarg.h>
-
-
-/**
- * struct specifiers - defines a structure for symbols and functions
- * @specifier: format specifier
- * @f: The function associated
- */
-
-typedef struct specifier
-{
-	char *specifiers;
-	int (*f)(va_list);
-} spec;
-
-/*prototypes*/
-int _printf(const char *format, ...);
-int get_function(char s, va_list args);
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdarg.h>
 int _putchar(char c);
-
-#endif
+void _puts(char *str);
+int _strlen(char *s);
+int _printf(const char *format, ...);
+char *convert_to(char representation[], unsigned int num, int base);
+int function_manager(char c, va_list arg);
+int _switch(char c, va_list arg);
+int print_character(va_list arg);
+int print_sign(va_list arg, int base);
+int print_unsign(va_list arg, int base);
+int print_string(va_list arg);
+int print_ptr(va_list arg);
+int print_rot13(va_list arg);
+int print_rev(va_list arg);
+int print_base16_upper_lower(va_list arg, char *representation);
+int loop_format(va_list arg, const char *string);
+int call_function_manager(char aux, va_list arg);
+int check_percent(int *flag, char aux);
+#endif /*MAIN.H*/
