@@ -1,1 +1,0 @@
- printf in C langage
