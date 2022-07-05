@@ -106,3 +106,5 @@ These are all the tasks of this project, the ones that are completed link to the
 * All the above options work well together.
 
 ---
+Mairam Abdoul Niane - [Github](https://github.com/Mairam-dev) 
+Mathias Dib Faye - [Github](https://github.com/dib-ops) ||
